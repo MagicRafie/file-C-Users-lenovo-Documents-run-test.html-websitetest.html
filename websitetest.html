@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Sign In</title>
+    <link rel="stylesheet" href="style_a.css">
+</head>
+<body>
+    <!-- ----------contact------------- -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Sign In</h1><br>
+                </div>
+                <div class="contact-right"></div>
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required><br>
+                    <input type="email" name="Email" placeholder="Your Email" required><br>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea><br>
+                    <button type="submit" class="btn">Submit</button><br>
+                </form>
+            </div>
+        </div>
+    </div>
+    <a href="https://www.detik.com/bali/berita/d-6471863/breaking-news-dua-kapal-nelayan-terbakar-di-perairan-pengambengan">News</a>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw7dzMRqmgA3LLOrrBT-R5VqwASD4Ql_v8GX_1rR-I-jiF5OyMyQnb9koCdDGXakAk/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+    </script>
+</body>
+</html>
